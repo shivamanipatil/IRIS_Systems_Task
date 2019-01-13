@@ -11,7 +11,7 @@ A Shopping app where User can upload items to sell and make requests.(Upload Ima
  2.Change the password in config/databse.yml to your mysql password
  3. Run "bundle install"
  3.Execute "rake db:create" and then "rake db:migrate"
- 4.in the web browser type " localhost:3000"
+ 4.In the web browser type " localhost:3000"
  
  *Note*-Run "sudo apt-get install imagemagick" only if the images are not visible
  
