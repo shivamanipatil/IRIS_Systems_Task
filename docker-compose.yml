@@ -1,22 +1,35 @@
-version: '3.3'
+version: '3'
 services:
+  nginx:
+    restart: always
+    container_name: reverse-proxy
+    build: ./reverse_proxy
+    depends_on: 
+      - db
+      - web
+    ports:
+      - "8020:8020"
+    networks: 
+      - products
   db:
     image: mysql:5.6
     environment:
       MYSQL_ROOT_PASSWORD : complexpassword
     volumes:
       - ./tmp/db:/var/lib/mysql
+    expose: 
+      - "3306"
     networks: 
       - products
   web:
-    build: .
+    build: ./Shopping-App-IRIS
     environment: 
       DATABASE_HOST: db
       DB_PASSWORD: complexpassword
     volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
+      - ./Shopping-App-IRIS:/myapp
+    expose:
+      - "3000"
     links:
       - "db"
     networks: 
