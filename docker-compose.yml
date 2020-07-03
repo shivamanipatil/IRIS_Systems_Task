@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD : complexpassword
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    networks: 
+      - products
+  web:
+    build: .
+    environment: 
+      DATABASE_HOST: db
+      DB_PASSWORD: complexpassword
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
+    networks: 
+      - products
+networks: 
+  products:
