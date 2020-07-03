@@ -26,13 +26,12 @@ services:
     environment: 
       DATABASE_HOST: db
       DB_PASSWORD: complexpassword
-    volumes:
-      - ./Shopping-App-IRIS:/myapp
     expose:
       - "3000"
     links:
-      - "db"
+      - db
     networks: 
       - products
+    tty: true
 networks: 
   products:
