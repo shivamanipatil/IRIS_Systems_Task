@@ -10,7 +10,7 @@ services:
       - db
       - web
     ports:
-      - "8020:8020"
+      - "8080:8080"
     networks: 
       - products
   db:
