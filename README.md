@@ -24,6 +24,7 @@ sudo docker-compose build
 docker-compose up --scale web=3
 ```
   Launches 3 instaces of rails application load balanced by Nginx.
+  
 4. For the first time create and run migrations for the database for rails.
 ```
 docker-compose run --rm web rake db:create db:migrate
