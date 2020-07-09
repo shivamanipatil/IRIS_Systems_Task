@@ -24,9 +24,12 @@ sudo docker-compose build
 docker-compose up --scale web=3
 ```
   Launches 3 instaces of rails application load balanced by Nginx.
-
-4. Application is live on localhost:8080
-5. For daily(at 00:00 can be changed) database dump with name as shop1_development_date_time in created db_dump directory, add this line to crontabfile (maybe use crontab -e)
+4. For the first time create and run migrations for the database for rails.
+```
+docker-compose run --rm web rake db:create db:migrate
+```
+5. Application is live on localhost:8080
+6. For daily(at 00:00 can be changed) database dump with name as shop1_development_date_time in created db_dump directory, add this line to crontabfile (maybe use crontab -e)
 ```
 @daily docker-compose exec db /usr/bin/mysqldump -u root --password=complexpassword shop1_development > ~/db_dump/shop1_development_`date '+%Y_%m_%d__%H_%M_%S'`.sql
 ```
